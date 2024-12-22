@@ -1,5 +1,4 @@
-require 'app/scenes/title_scene.rb'
-require 'app/scenes/game_scene.rb'
+require 'app/requires.rb'
 
 class Game
   attr_reader :active_scene
