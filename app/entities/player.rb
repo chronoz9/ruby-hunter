@@ -1,11 +1,14 @@
 module Entities
   class Player < MobileEntity
+    attr :took_action
+
     def initialize(opts={})
       super
       @path = 'sprites/misc/dragon-0.png'
     end
 
     def tick(args)
+      @took_action = false
       # @map_x += ::Controllers::MapController::TILE_WIDTH * args.inputs.left_right * 0.5
       # @map_y += ::Controllers::MapController::TILE_HEIGHT * args.inputs.up_down * 0.5
       # target_x = @map_x
@@ -32,6 +35,7 @@ module Entities
                 end
       attempt_move(args, target_x, target_y) do
         ::Controllers::MapController.tick(args)
+        @took_action = true
       end
 
 
